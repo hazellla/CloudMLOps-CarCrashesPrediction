@@ -1,0 +1,8 @@
+gcloud functions deploy extract_crashes `
+    --region us-central1 `
+    --runtime python311 `
+    --trigger-http `
+    --source tasks/extract_crashes `
+    --project musa509-378614`
+    --entry-point extract_data `
+    --service-account id-09final@musa509-378614.iam.gserviceaccount.com
