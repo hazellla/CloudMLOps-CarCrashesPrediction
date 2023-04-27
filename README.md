@@ -20,7 +20,7 @@ In the `musa509s23_team<N>_raw_data` bucket, there are three folders. Each folde
 
 | Folder | Contents |
 |--------|----------|
-| `/traffic_vol/` | Contains the "traffic volumn" data downloaded from the [Pennsylvania traffic counts](https://www.pasda.psu.edu/download/padot/state/PaTraffic2023_04.zip) dataset. |
+| `/volumn/` | Contains the "traffic volumn" data downloaded from the [Pennsylvania traffic counts](https://www.pasda.psu.edu/download/padot/state/PaTraffic2023_04.zip) dataset. |
 | `/crashes/` | Contains the "car crashes history" data downloaded from the [Pennsylvania Crash Information Tool](https://www.arcgis.com/sharing/rest/content/items/cbb78b74142b46a3b1698cd769d983c8/data) dataset on Pennsylvania Department of Transportation. |
 | `/census/` | Contains the "PWD parcels" data downloaded from the [PWD Stormwater Billing Parcels](https://opendataphilly.org/dataset/pwd-stormwater-billing-parcels) dataset on OpenDataPhilly. |
 

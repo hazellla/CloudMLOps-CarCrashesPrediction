@@ -11,17 +11,19 @@ def prepare_data(request):
 
     raw_blob = raw_bucket.blob('crashes/crashes.json')
     content = raw_blob.download_as_string()
+    # print(content)
     data = json.loads(content)
+    print(data)
 
-    rows = []
+    # rows = []
     # FEELS LIKE THIS SHOULD BE UPDATED AFTER WE CHECK THE ACTUAL JSON DATA
-    for feature in data['features']:
-        row = feature['assessments']
-        row['geog'] = json.dumps(feature['geometry'])
-        rows.append(json.dumps(row))
+    # for feature in data['features']:
+    #     row = feature['assessments']
+    #     row['geog'] = json.dumps(feature['geometry'])
+    #     rows.append(json.dumps(row))
 
-    processed_blob = processed_bucket.blob('crashes/data.jsonl')
-    processed_blob.upload_from_string(
-        '\n'.join(rows), content_type='application/jsonl')
+    # processed_blob = processed_bucket.blob('crashes/data.jsonl')
+    # processed_blob.upload_from_string(
+    #     '\n'.join(rows), content_type='application/jsonl')
 
     return 'OK'
