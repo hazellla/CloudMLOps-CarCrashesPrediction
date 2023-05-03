@@ -71,7 +71,7 @@ function showFonMap(map) {
             }
         }).addTo(map)
         .eachLayer(function(layer) {
-            layer.bindTooltip(`Risk Value: ${risklevel(layer.feature.properties.V1)} - Click to see more!!`);});
+            layer.bindTooltip(`Risk Value: ${risklevel(layer.feature.properties.V1)} <br> Click to see more!!`);});
 
         // Click
         map.FLayer.addEventListener('click', (evt) =>{
