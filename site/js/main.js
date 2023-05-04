@@ -15,18 +15,18 @@ function initMap() {
             fillOpacity: 0.9,
             stroke: false,
         },
-        }).addTo(map);
+    }).addTo(map);
 
     return map;
-  }
+}
 
 function risklevel(value) {
     var crash = value;
     var level = 'low';  // Default fill color
     if (crash > 0.5 && crash < 1) {
-      level = 'middle';  // Red fill color for large crashs
+        level = 'middle';  // Red fill color for large crashs
     } else if (crash > 1) {
-      level = 'high';  // Yellow fill color for medium crashs
+        level = 'high';  // Yellow fill color for medium crashs
     }
     return level;
 };
@@ -34,76 +34,78 @@ function risklevel(value) {
 
 function showFonMap(map) {
     fetch('./test.geojson')
-    .then(response => {
-        // Parse the response into a JavaScript object
-        return response.json();
-    })
-    .then(geojson => {
-        // Save the resulting object as a variable
-        const dataGeojson = {
-            type: 'FeatureCollection',
-            features: geojson.features,
-        };
-        // Add the data GeoJSON points to the map as markers
-        map.FLayer=L.geoJSON(dataGeojson.features, {
-            style: function(feature) {
-                var crash = feature.properties.V1;
-                var fillColor = 'grey';  // Default fill color
-                var weight = 1
-                if (crash > 0.5 && crash < 1) {
-                  fillColor = '#FF5F00';  // Red fill color for large crash
-                  weight = 1.5
-                } else if (crash > 1) {
-                  fillColor = 'yellow';  // Yellow fill color for medium crashs
-                  weight = 2
+        .then(response => {
+            // Parse the response into a JavaScript object
+            return response.json();
+        })
+        .then(geojson => {
+            // Save the resulting object as a variable
+            const dataGeojson = {
+                type: 'FeatureCollection',
+                features: geojson.features,
+            };
+            // Add the data GeoJSON points to the map as markers
+            map.FLayer = L.geoJSON(dataGeojson.features, {
+                style: function (feature) {
+                    var crash = feature.properties.V1;
+                    var fillColor = '#F7ECDE';  // Default fill color
+                    var weight = 1
+                    if (crash > 0.5 && crash < 1) {
+                        fillColor = '#FAC213';  // Red fill color for large crash
+                        weight = 1.5
+                    } else if (crash > 1) {
+                        fillColor = '#D61C4E';  // Yellow fill color for medium crashs
+                        weight = 2
+                    }
+                    return {
+                        fillColor: fillColor,
+                        color: fillColor,  // Border color
+                        weight: weight,  // Border width
+                        opacity: 1,  // Border opacity
+                        fillOpacity: 0.6  // Fill opacity
+                    };
+                },
+                onEachFeature: function (feature, layer) {
+                    // Set the clickable buffer for each feature layer
+                    layer.options.clickableBuffer = 10;
                 }
-                return {
-                    fillColor: fillColor,
-                    color: fillColor,  // Border color
-                    weight: weight,  // Border width
-                    opacity: 1,  // Border opacity
-                    fillOpacity: 0.6  // Fill opacity
-                  };
-              },
-            onEachFeature: function(feature, layer) {
-            // Set the clickable buffer for each feature layer
-            layer.options.clickableBuffer = 10;
-            }
-        }).addTo(map)
-        .eachLayer(function(layer) {
-            layer.bindTooltip(`Risk Value: ${risklevel(layer.feature.properties.V1)} <br> Click to see more!!`);});
+            }).addTo(map)
+                .eachLayer(function (layer) {
+                    layer.bindTooltip(`Risk Value: ${risklevel(layer.feature.properties.V1)} <br> Click to see more!!`);
+                });
 
-        // Click
-        map.FLayer.addEventListener('click', (evt) =>{
-            // Information Variable
-            var info = evt.sourceTarget.feature.properties
+            // Click
+            map.FLayer.addEventListener('click', (evt) => {
+                // Information Variable
+                var info = evt.sourceTarget.feature.properties
 
-            if (map.hLayer !== undefined){
-                map.removeLayer(map.hLayer);
+                if (map.hLayer !== undefined) {
+                    map.removeLayer(map.hLayer);
                 }
-            map.hLayer = L.marker(evt.latlng)
-            .bindTooltip(`Risk level:${risklevel(info.V1)} <br> 
+                map.hLayer = L.marker(evt.latlng)
+                    .bindTooltip(`Risk level:${risklevel(info.V1)} <br> 
             Risk Value: ${info.V1} <br> 
             Daily Truck Volume: ${info.DLY_TRK_VM} <br> 
             Truck %: ${info.TRK_PCT} <br> 
             Daily Traffic Volume: ${info.DLY_VMT} <br> 
             Street Length: ${info.SEG_LNGTH_} m`, {
-                permanent: true
-              })
-            .addTo(map);
-            
-            map.setView(evt.latlng, 15);
+                        permanent: true
+                    })
+                    .addTo(map);
 
-            //close tooltip
-            map.hLayer.addEventListener('click', function(e) {
-                if (map.hLayer !== undefined){
-                    map.removeLayer(map.hLayer);
+                map.setView(evt.latlng, 15);
+
+                //close tooltip
+                map.hLayer.addEventListener('click', function (e) {
+                    if (map.hLayer !== undefined) {
+                        map.removeLayer(map.hLayer);
                     };
-            })
-        });
+                })
+            });
 
 
-})};
+        })
+};
 
 
 
