@@ -16,7 +16,7 @@ def extract_data(request):
     crash_io = io.BytesIO(resp.content)
     zip = zipfile.ZipFile(crash_io)
     csv_crash = zip.read("CRASH_2021_Statewide.csv")  # read csv file
-    blob = bucket.blob('crashes/crashes.csv')  # create bucket
+    blob = bucket.blob('crashes/crashes.csv')  # create blob
     blob.upload_from_string(
         csv_crash, content_type='application/csv')  # upload
 

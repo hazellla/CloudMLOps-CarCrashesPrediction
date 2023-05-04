@@ -11,12 +11,11 @@ def prepare_data(request):
 
     raw_blob = raw_bucket.blob('crashes/crashes.json')
     content = raw_blob.download_as_string()
-    # print(content)
+
     data = json.loads(content)
     print(data)
 
     # rows = []
-    # FEELS LIKE THIS SHOULD BE UPDATED AFTER WE CHECK THE ACTUAL JSON DATA
     # for feature in data['features']:
     #     row = feature['assessments']
     #     row['geog'] = json.dumps(feature['geometry'])

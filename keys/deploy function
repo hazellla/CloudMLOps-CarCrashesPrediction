@@ -7,3 +7,38 @@ gcloud functions deploy extract_crashes `
     --entry-point extract_data `
     --service-account musa509-378614@appspot.gserviceaccount.com
 
+gcloud functions deploy extract_volume `
+    --region us-central1 `
+    --runtime python311 `
+    --trigger-http `
+    --source tasks/extract_volume `
+    --project musa509-378614 `
+    --entry-point extract_data `
+    --service-account musa509-378614@appspot.gserviceaccount.com
+
+gcloud functions deploy prepare_crashes `
+    --region us-central1 `
+    --runtime python311 `
+    --trigger-http `
+    --source tasks/prepare_crashes `
+    --project musa509-378614 `
+    --entry-point prepare_data `
+    --service-account musa509-378614@appspot.gserviceaccount.com
+
+gcloud functions deploy load_crashes `
+--region us-central1 `
+--runtime python311 `
+--trigger-http `
+--source tasks/load_crashes `
+--project musa509-378614 `
+--entry-point load_data `
+--service-account musa509-378614@appspot.gserviceaccount.com
+
+gcloud functions deploy load_volume `
+--region us-central1 `
+--runtime python311 `
+--trigger-http `
+--source tasks/load_volume `
+--project musa509-378614 `
+--entry-point load_data `
+--service-account musa509-378614@appspot.gserviceaccount.com
