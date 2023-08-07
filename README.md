@@ -3,6 +3,8 @@ Team: Yuhao Jia, Hanzhi Zhang
 
 This is a MUSA Capstone Project. We want to build up a data pipeline for the counts of car crashes prediction model. By automating the data collection and analysis process, a data pipeline can provide real-time or near real-time insights into traffic patterns and risk factors. This can help transportation agencies and emergency services respond more quickly to accidents or other incidents.
 
+ Check the Prediction map [here](https://hazellla.github.io/MUSA509-final/site/index.html).
+
 
 ## 
 
