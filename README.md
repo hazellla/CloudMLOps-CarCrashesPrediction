@@ -5,7 +5,7 @@ This is a MUSA Capstone Project. We want to build up a data pipeline for the cou
 
  Check the Prediction map [here](https://hazellla.github.io/CloudMLOps-CarCrashesPrediction/site/index.html).
 
-<img src="https://yuhaochrisj.github.io/yuhao_portofolio/Images/Pipeline.png" width="480">
+<img src="https://yuhaochrisj.github.io/yuhao_portofolio/Images/Pipeline.png">
 
 ## 
 
