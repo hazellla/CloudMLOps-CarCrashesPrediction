@@ -7,7 +7,8 @@ Author: Yuhao Jia, Hanzhi Zhang
 </p>
 We built up a data pipeline for the counts of car crashes prediction model. By automating the data collection and analysis process, a data pipeline can provide real-time or near real-time insights into traffic patterns and risk factors. This can help transportation agencies and emergency services respond more quickly to accidents or other incidents. This is a MUSA Capstone Project. 
 
- Check the Prediction map [here](https://hazellla.github.io/CloudMLOps-CarCrashesPrediction/site/index.html).
+
+Check the Prediction map [here](https://hazellla.github.io/CloudMLOps-CarCrashesPrediction/site/index.html).
 
 ## 
 
